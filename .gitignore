@@ -1,0 +1,7 @@
+srcs/.env
+secrets/
+.env.local
+.docker/
+.DS_Store
+Thumbs.db
+*.swp
