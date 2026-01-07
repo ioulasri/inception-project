@@ -71,6 +71,17 @@ if ! wp core is-installed --allow-root --path=/var/www/html 2>/dev/null; then
         --allow-root \
         --path=/var/www/html
     echo "WordPress installation completed!"
+    
+    # Create a second user (regular user, not admin)
+    if ! wp user get "editor" --allow-root --path=/var/www/html 2>/dev/null; then
+        echo "Creating regular user..."
+        wp user create editor editor@example.com \
+            --role=author \
+            --user_pass="editor123" \
+            --allow-root \
+            --path=/var/www/html
+        echo "Regular user created!"
+    fi
 else
     echo "WordPress is already installed."
 fi
