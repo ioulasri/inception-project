@@ -39,6 +39,7 @@ clean:
 
 fclean: down
 	@echo "Full cleanup - removing images and volumes..."
+	@docker volume rm -f srcs_db_data srcs_wordpress_data 2>/dev/null || true
 	@docker system prune -a --volumes -f
 	@echo "Cleanup complete!"
 
