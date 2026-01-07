@@ -37,6 +37,11 @@ clean:
 	@docker container prune -f
 	@docker image prune -f
 
+fclean: down
+	@echo "Full cleanup - removing images and volumes..."
+	@docker system prune -a --volumes -f
+	@echo "Cleanup complete!"
+
 rebuild: down clean build up
 	@echo "Full rebuild complete!"
 
